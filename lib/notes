@@ -1,0 +1,52 @@
+class Backer
+
+	attr_accessor :name, :backed_projects, :project
+
+	def initialize(name)
+		@name = name 
+		@backed_projects = []
+	end 
+
+
+	def back_project(proj)
+    	@backed_projects << proj
+    	proj.backers << self 
+    	@backed_projects 
+	end 	
+
+end 
+
+
+class Project
+
+attr_accessor :title, :backers, :backer
+
+
+def backers(name)
+  @name = name 
+end 
+
+def backers=(name)
+  @name = name 
+end   
+  
+	def initialize(title)
+		@title = title 
+		@backers = []
+	end 	
+
+	def add_backer(backer)
+		@backers << backer
+	end 	
+end 
+ 
+logan = Backer.new("Logan")  #CREATES A NEW INSTANCE LOGAN IN BACKER
+hoverboard = Project.new("Awesome Hoverboard") #CREATES NEW INSTANCE HOVERBOAR IN PROJECT
+
+logan.back_project(hoverboard)
+	1) BY DOING hoverboard.backers --> we are calling an empty array of backers inside the hoverboard instance (in project class)
+	2) we are passing in logans whole instance (self) into that empty array of backers 
+	3) thats going to be inside of the project class 
+
+
+
